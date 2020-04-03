@@ -5,12 +5,13 @@ const register = new client.Registry();
 
 client.collectDefaultMetrics({ prefix: 'node_', timeout: 5000, register });
 
-var username = `${user}` , password = `${pass}` , auth = "Basic " + Buffer.from(username + ":" + password).toString("base64");
 var request = require('request');
 var _metricsResult = [], _nodesResult = [], metricsData = [], clusterKeys = [], clusterValues = [];
 const endpoint = process.env.EMQX_ENDPOINT;
 const user = process.env.USERNAME, pass = process.env.PASSWORD, port = process.env.PORT;
 const gaugeList = [], metricValues = [];
+
+var username = `${user}` , password = `${pass}` , auth = "Basic " + Buffer.from(username + ":" + password).toString("base64");
 
 function queryMetrics() {
    var url = `${endpoint}/api/v3/metrics`;
